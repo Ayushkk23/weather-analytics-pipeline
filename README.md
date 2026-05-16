@@ -1,258 +1,174 @@
-🌦️ Real-Time Weather Analytics Pipeline using Snowflake \& Power BI
+# 🌦️ Real-Time Weather Analytics Pipeline using Snowflake & Power BI
 
+> A modern end-to-end weather analytics project that combines real-time API ingestion, cloud data warehousing, ETL processing, and interactive business intelligence visualization.
 
+This project fetches live weather and air quality data from **WeatherAPI**, processes it using **Python ETL pipelines**, stores it in **Snowflake**, and visualizes insights through an interactive **Power BI dashboard**.
 
-A modern end-to-end weather analytics project that combines real-time API ingestion, cloud data warehousing, ETL processing, and interactive business intelligence visualization.
+---
 
+## 🚀 Project Architecture
 
+```mermaid
+graph LR
+    A[WeatherAPI] -->|Extract| B[Python ETL Pipeline]
+    B -->|Transform & Load| C[(Snowflake Data Warehouse)]
+    C -->|Analyze| D[Power BI Dashboard]
+```
 
-This project fetches live weather and air quality data from WeatherAPI, processes it using Python ETL pipelines, stores it in Snowflake, and visualizes insights through an interactive Power BI dashboard.
+---
 
+## 📊 Dashboard Preview
 
+### Main Dashboard Features
+*   **Real-Time Temperature Monitoring**
+*   **AQI & Pollution Analysis**
+*   **Forecast Trends**
+*   **Rain Probability Insights**
+*   **Wind Speed, Humidity & Pressure Monitoring**
+*   **Sunrise & Sunset Tracking**
 
-🚀 Project Architecture
+---
 
-WeatherAPI
+## ✨ Key Features
 
-&#x20;   ↓
+*   🔄 **Real-time Weather API Integration**
+*   ☁️ **Snowflake Cloud Data Warehouse Integration**
+*   🐍 **Python-based ETL Pipeline**
+*   📈 **Interactive Power BI Dashboard**
+*   🌍 **Multi-location Weather Monitoring**
+*   🌫️ **Air Quality Index (AQI) Visualization**
+*   📅 **Forecast Analysis & Trend Monitoring**
+*   🎨 **Modern Glassmorphism UI Design**
+*   ⚡ **Automated Data Refresh Workflow**
+*   📊 **DAX Measures & Data Modeling**
 
-Python ETL Pipeline
+---
 
-&#x20;   ↓
+## 🛠️ Tech Stack
 
-Snowflake Cloud Data Warehouse
+| Technology | Purpose |
+| :--- | :--- |
+| **Power BI** | Dashboard & Visualization |
+| **Snowflake** | Cloud Data Warehouse |
+| **Python** | ETL Pipeline |
+| **WeatherAPI** | Real-Time Weather Data |
+| **SQL** | Database Management |
+| **DAX** | KPI & Analytics Calculations |
 
-&#x20;   ↓
+---
 
-Power BI Dashboard
+## 📂 Project Structure
 
-📊 Dashboard Preview
-
-Main Dashboard Features
-
-Real-Time Temperature Monitoring
-
-AQI \& Pollution Analysis
-
-Forecast Trends
-
-Rain Probability Insights
-
-Wind Speed, Humidity \& Pressure Monitoring
-
-Sunrise \& Sunset Tracking
-
-✨ Key Features
-
-🔄 Real-time Weather API Integration
-
-☁️ Snowflake Cloud Data Warehouse Integration
-
-🐍 Python-based ETL Pipeline
-
-📈 Interactive Power BI Dashboard
-
-🌍 Multi-location Weather Monitoring
-
-🌫️ Air Quality Index (AQI) Visualization
-
-📅 Forecast Analysis \& Trend Monitoring
-
-🎨 Modern Glassmorphism UI Design
-
-⚡ Automated Data Refresh Workflow
-
-📊 DAX Measures \& Data Modeling
-
-🛠️ Tech Stack
-
-Technology	Purpose
-
-Power BI	Dashboard \& Visualization
-
-Snowflake	Cloud Data Warehouse
-
-Python	ETL Pipeline
-
-WeatherAPI	Real-Time Weather Data
-
-SQL	Database Management
-
-DAX	KPI \& Analytics Calculations
-
-📂 Project Structure
-
+```text
 📦 Weather-Analytics-Pipeline
+ ┣ 📂 Dashboard
+ ┃ ┗ 📄 Weather_Dashboard.pbix
+ ┣ 📂 Python_ETL
+ ┃ ┗ 📄 weather_etl.py
+ ┣ 📂 SQL
+ ┃ ┗ 📄 snowflake_tables.sql
+ ┣ 📂 Screenshots
+ ┃ ┣ 📄 dashboard_preview.png
+ ┃ ┣ 📄 snowflake_setup.png
+ ┃ ┗ 📄 data_model.png
+ ┣ 📄 README.md
+ ┗ 📄 requirements.txt
+```
 
-&#x20;┣ 📂 Dashboard
+---
 
-&#x20;┃ ┗ 📄 Weather\_Dashboard.pbix
+## ⚙️ Snowflake Setup
 
-&#x20;┣ 📂 Python\_ETL
+### 1. Create Database & Schema
+```sql
+CREATE DATABASE WEATHER_DB;
+USE DATABASE WEATHER_DB;
 
-&#x20;┃ ┗ 📄 weather\_etl.py
+CREATE SCHEMA WEATHER_SCHEMA;
+USE SCHEMA WEATHER_SCHEMA;
+```
 
-&#x20;┣ 📂 SQL
-
-&#x20;┃ ┗ 📄 snowflake\_tables.sql
-
-&#x20;┣ 📂 Screenshots
-
-&#x20;┃ ┣ 📄 dashboard\_preview.png
-
-&#x20;┃ ┣ 📄 snowflake\_setup.png
-
-&#x20;┃ ┗ 📄 data\_model.png
-
-&#x20;┣ 📄 README.md
-
-&#x20;┗ 📄 requirements.txt
-
-⚙️ Snowflake Setup
-
-Create Database \& Schema
-
-CREATE DATABASE WEATHER\_DB;
-
-
-
-USE DATABASE WEATHER\_DB;
-
-
-
-CREATE SCHEMA WEATHER\_SCHEMA;
-
-
-
-USE SCHEMA WEATHER\_SCHEMA;
-
-Create Weather Table
-
-CREATE OR REPLACE TABLE CURRENT\_DATA (
-
-&#x20;   CITY STRING,
-
-&#x20;   REGION STRING,
-
-&#x20;   COUNTRY STRING,
-
-&#x20;   TEMP\_C FLOAT,
-
-&#x20;   FEELSLIKE\_C FLOAT,
-
-&#x20;   HUMIDITY FLOAT,
-
-&#x20;   WIND\_KPH FLOAT,
-
-&#x20;   PRESSURE\_MB FLOAT,
-
-&#x20;   PRECIP\_MM FLOAT,
-
-&#x20;   VIS\_KM FLOAT,
-
-&#x20;   UV FLOAT,
-
-&#x20;   AQI\_CO FLOAT,
-
-&#x20;   AQI\_NO2 FLOAT,
-
-&#x20;   AQI\_O3 FLOAT,
-
-&#x20;   AQI\_SO2 FLOAT,
-
-&#x20;   AQI\_PM2\_5 FLOAT,
-
-&#x20;   AQI\_PM10 FLOAT,
-
-&#x20;   LAST\_UPDATED TIMESTAMP
-
+### 2. Create Weather Table
+```sql
+CREATE OR REPLACE TABLE CURRENT_DATA (
+    CITY STRING,
+    REGION STRING,
+    COUNTRY STRING,
+    TEMP_C FLOAT,
+    FEELSLIKE_C FLOAT,
+    HUMIDITY FLOAT,
+    WIND_KPH FLOAT,
+    PRESSURE_MB FLOAT,
+    PRECIP_MM FLOAT,
+    VIS_KM FLOAT,
+    UV FLOAT,
+    AQI_CO FLOAT,
+    AQI_NO2 FLOAT,
+    AQI_O3 FLOAT,
+    AQI_SO2 FLOAT,
+    AQI_PM2_5 FLOAT,
+    AQI_PM10 FLOAT,
+    LAST_UPDATED TIMESTAMP
 );
+```
 
-🐍 Python ETL Workflow
+---
 
+## 🐍 Python ETL Workflow
 
+The `weather_etl.py` script executes the following workflow:
+1.  **Fetches** live weather data from WeatherAPI.
+2.  **Extracts** essential weather & AQI metrics.
+3.  **Connects** securely to the Snowflake data warehouse.
+4.  **Inserts** the processed records into cloud tables.
+5.  **Enables** real-time analytics for Power BI downstream.
 
-The ETL script:
+---
 
+## 📈 Power BI Features
 
+*   **Dynamic KPI Cards:** Quick overview of critical metrics.
+*   **Forecast Trend Analysis:** Line charts tracking temperature and precipitation.
+*   **AQI Monitoring:** Gauge charts for pollution levels.
+*   **Interactive Filters:** Slicers for location and time-based filtering.
+*   **Location-based Insights:** Map visuals for geographical weather tracking.
+*   **Custom DAX Measures:** Complex calculations for rolling averages and KPIs.
+*   **Glassmorphism UI Design:** Modern, sleek, and user-friendly interface.
 
-Fetches live weather data from WeatherAPI
+---
 
-Extracts weather \& AQI metrics
+## 📌 Business Use Cases
 
-Connects to Snowflake
+*   **Environmental Monitoring:** Tracking pollution and AQI for health advisories.
+*   **Weather Intelligence Reporting:** Providing actionable data for agriculture and logistics.
+*   **Smart City Analytics:** Integrating climate data into urban planning.
+*   **Climate Trend Visualization:** Long-term observation of weather patterns.
+*   **Real-Time Data Engineering Practice:** A robust template for modern data stacks.
 
-Inserts records into cloud tables
+---
 
-Enables real-time analytics in Power BI
-
-📈 Power BI Features
-
-Dynamic KPI Cards
-
-Forecast Trend Analysis
-
-AQI Monitoring
-
-Interactive Filters
-
-Location-based Insights
-
-Custom DAX Measures
-
-Glassmorphism UI Design
-
-📌 Business Use Cases
-
-Environmental Monitoring
-
-Weather Intelligence Reporting
-
-Smart City Analytics
-
-Climate Trend Visualization
-
-Real-Time Data Engineering Practice
-
-🎯 Learning Outcomes
-
-
+## 🎯 Learning Outcomes
 
 This project demonstrates practical skills in:
+*   Data Engineering & ETL Pipeline Development
+*   Cloud Warehousing (Snowflake)
+*   API Integration & Automation
+*   Relational Data Modeling
+*   Business Intelligence & Dashboard Design
 
+---
 
+## 🔥 Future Improvements
 
-Data Engineering
+- [ ] **AWS Lambda Automation:** Serverless scheduling for the Python script.
+- [ ] **Historical Weather Trend Storage:** Archiving old data for predictive modeling.
+- [ ] **Streamlit Frontend Integration:** Building a lightweight web app for the data.
+- [ ] **Automated Alerts:** Triggering notifications for dangerous AQI thresholds.
+- [ ] **Incremental Data Loading:** Optimizing Snowflake inserts to save compute.
+- [ ] **Real-Time Streaming Pipeline:** Moving from batch processing to Kafka/Spark streaming.
 
-Cloud Warehousing
+---
 
-ETL Pipeline Development
+# 🎯 Why This Project
 
-API Integration
-
-Data Modeling
-
-Business Intelligence
-
-Dashboard Design
-
-🔥 Future Improvements
-
-AWS Lambda Automation
-
-Historical Weather Trend Storage
-
-Streamlit Frontend Integration
-
-Automated Alerts for AQI Thresholds
-
-Incremental Data Loading
-
-Real-Time Streaming Pipeline
-
-# 🧠 Developer Notes
-
-
-
-This project focuses on integrating real-time API ingestion, ETL processing, cloud-based warehousing, and interactive analytics visualization into a single end-to-end pipeline.
-
+The objective of this project was to build a real-time analytics pipeline capable of ingesting, storing, processing, and visualizing live environmental data using modern cloud and BI technologies.
