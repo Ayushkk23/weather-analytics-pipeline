@@ -2,7 +2,7 @@ import requests
 import snowflake.connector
 
 # Weather API
-API_KEY = "7cea54e807954e71b4453812261103"
+API_KEY = "YOUR_API_KEY"
 CITY = "Hyderabad"
 
 url = f"http://api.weatherapi.com/v1/current.json?key={API_KEY}&q={CITY}&aqi=yes"
@@ -16,9 +16,9 @@ current = data['current']
 
 # Snowflake Connection
 conn = snowflake.connector.connect(
-    user='snowsach',
-    password='Ayush@8623955488',
-    account='XJDOQDU-MY51392',
+    user='YOUR_USERNAME',
+    password='YOUR_PASSWORD',
+    account='YOUR_ACCOUNT_IDENTIFIER',
     warehouse='COMPUTE_WH',
     database='WEATHER_DB',
     schema='WEATHER_SCHEMA'
